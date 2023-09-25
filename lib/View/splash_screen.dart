@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:covid_tracker/View/world_states.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -11,18 +14,20 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late final AnimationController _controller =
-      AnimationController(duration: Duration(seconds: 3), vsync: this);
+      AnimationController(duration: Duration(seconds: 3), vsync: this)..repeat();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    Timer(const Duration(seconds: 5), () {
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => WorldStatesScreen()));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    print(_controller.value.toString);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -34,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: Container(
                   height: screenHeight * 0.4,
                   width: screenWidth * 0.9,
-                  child: const Center(
+                  child:  Center(
                     child: Image(image: AssetImage('images/virus.png')),
                   ),
                 ),
@@ -45,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
                   );
                 }),
             SizedBox(height: screenHeight*0.08,),
+            Text(_controller.value.toString()),
             const Align(
                 alignment: Alignment.center,
                 child: Text("Covid-19\nTracker App",style: TextStyle(fontWeight: FontWeight.bold,fontSize:25),)),

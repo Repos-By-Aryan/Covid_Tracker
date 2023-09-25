@@ -50,10 +50,9 @@ class _SplashScreenState extends State<SplashScreen>
                   );
                 }),
             SizedBox(height: screenHeight*0.08,),
-            Text(_controller.value.toString()),
             const Align(
                 alignment: Alignment.center,
-                child: Text("Covid-19\nTracker App",style: TextStyle(fontWeight: FontWeight.bold,fontSize:25),)),
+                child: Text("Covid-19\nTracker App",textAlign:TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize:25),)),
           ],
         ),
       ),
